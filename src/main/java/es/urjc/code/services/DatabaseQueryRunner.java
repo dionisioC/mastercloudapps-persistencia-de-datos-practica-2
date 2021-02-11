@@ -79,7 +79,13 @@ public class DatabaseQueryRunner {
         System.out.println("Dado el código de empleado de un tripulante, mostrar su nombre y apellidos y las ciudades desde las que ha despegado junto con la fecha en que despegó.");
         System.out.println("\n");
 
-        List<CrewMemberDto> crewMemberDtos = crewMemberRepository.getCrewMemberDestinationCitiesAndDatesByCrewMemberCode("code01");
+        String code = "code01";
+
+        System.out.println("-----Query parameters: ");
+        System.out.println("-----1. - Code: " + code);
+        System.out.println("\n");
+
+        List<CrewMemberDto> crewMemberDtos = crewMemberRepository.getCrewMemberDestinationCitiesAndDatesByCrewMemberCode(code);
         for (CrewMemberDto crewMemberDto : crewMemberDtos) {
             System.out.println(crewMemberDto);
         }
