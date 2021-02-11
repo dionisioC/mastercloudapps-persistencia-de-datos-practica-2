@@ -1,20 +1,27 @@
 package es.urjc.code.models;
 
-import javax.persistence.*;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @MappedSuperclass
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(
+        strategy = GenerationType.AUTO,
+        generator = "native"
+    )
+    @GenericGenerator(
+        name = "native",
+        strategy = "native"
+    )
     private long id;
     @Column(unique = true)
     private String code;

@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Data
@@ -15,7 +16,14 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Airport {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(
+        strategy = GenerationType.AUTO,
+        generator = "native"
+    )
+    @GenericGenerator(
+        name = "native",
+        strategy = "native"
+    )
     private long id;
     @Column(unique = true)
     private String iataCode;

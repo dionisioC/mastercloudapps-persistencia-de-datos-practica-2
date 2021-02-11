@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,7 +16,14 @@ import java.util.Date;
 @Builder
 public class TechnicalReview {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(
+        strategy = GenerationType.AUTO,
+        generator = "native"
+    )
+    @GenericGenerator(
+        name = "native",
+        strategy = "native"
+    )
     private long id;
 
     private Date startDate;
