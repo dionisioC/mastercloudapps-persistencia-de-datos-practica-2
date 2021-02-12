@@ -18,7 +18,7 @@ public class AppBootstrap implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        this.databaseQueryRunner.run();
+        //this.databaseQueryRunner.run();
         this.mongoQueryRunner.run();
     }
 }
