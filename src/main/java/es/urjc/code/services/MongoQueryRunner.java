@@ -1,10 +1,12 @@
 package es.urjc.code.services;
 
-import es.urjc.code.models.Provincia;
-import es.urjc.code.repository.ProvinceRepository;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import es.urjc.code.dtos.AutonomicCommunityAggregateDto;
+import es.urjc.code.models.Provincia;
+import es.urjc.code.repository.ProvinceRepository;
 
 @Service
 public class MongoQueryRunner {
@@ -20,6 +22,7 @@ public class MongoQueryRunner {
         System.out.println("=========================================== QUERING MONGO ===========================================");
 
         this.query1();
+        this.query2();
 
         System.out.println("=========================================== STOP QUERING ===========================================");
     }
@@ -34,5 +37,15 @@ public class MongoQueryRunner {
         }
     }
 
+    private void query2() {
+        System.out.println("=========================================== MONGO QUERY 2 ===========================================");
+        System.out.println("Listado mostrando, para cada comunidad autónoma, su número de provincias\n"
+        + "(Ceuta y Melilla se consideran como parte de la comunidad autónoma “sin comunidad”).\n");
+
+        List<AutonomicCommunityAggregateDto> foo = provinceRepository.aggregationQuery();
+        for (AutonomicCommunityAggregateDto ca : foo) {
+            System.out.println(ca);
+        }
+    }
 
 }

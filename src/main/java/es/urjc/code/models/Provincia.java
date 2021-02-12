@@ -29,6 +29,4 @@ public class Provincia {
 
     @Field("Datos")
     private List<ProvinceData> data;
-
-
 }
