@@ -1,10 +1,13 @@
 package es.urjc.code.models;
 
+import com.vladmihalcea.hibernate.type.json.JsonStringType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,6 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@TypeDef(name = "json", typeClass = JsonStringType.class)
 public class Flight {
 
     @Id
@@ -51,4 +55,8 @@ public class Flight {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "flight")
     private List<CrewMemberFlight> crewMembers;
+
+    @Type(type = "json")
+    @Column(columnDefinition = "json")
+    private Long[] crewMembersId;
 }
