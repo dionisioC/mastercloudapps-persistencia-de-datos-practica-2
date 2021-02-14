@@ -1,5 +1,6 @@
 package es.urjc.code.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,6 +34,7 @@ public class TechnicalReview {
     private String workDescription;
 
     @ManyToOne
+    @JsonIgnore
     private Airplane checkedAirplane;
 
     @ManyToOne

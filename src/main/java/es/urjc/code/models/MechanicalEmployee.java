@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class MechanicalEmployee extends Employee {
     private Date startingDate;
     private String education;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "mechanicalEmployee")
     private List<TechnicalReview> technicalReview;
 

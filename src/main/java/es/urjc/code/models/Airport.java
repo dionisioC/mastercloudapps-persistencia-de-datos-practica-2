@@ -3,6 +3,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,6 +32,7 @@ public class Airport {
     private String city;
     private String country;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "airport")
     private List<TechnicalReview> technicalReviews;
 }
