@@ -32,6 +32,7 @@ public class DatabaseQueryRunner {
         this.query3();
         this.query4();
         this.query5();
+        this.query6();
 
         System.out.println("=========================================== STOP QUERING ===========================================");
     }
@@ -107,6 +108,17 @@ public class DatabaseQueryRunner {
         List<AirplaneRevisionInterface> airplaneRevisionInterfaces = airplaneRepository.findAirplaneMechanicalReviewerDTO();
         for (AirplaneRevisionInterface info : airplaneRevisionInterfaces) {
             System.out.println("License Plate: " + info.getLicensePlate() + " Name: " + info.getName() + " Last name:" + info.getLastName());
+        }
+    }
+
+    private void query6() {
+        System.out.println("=========================================== QUERY 6 ===========================================");
+        System.out.println("Para cada tripulante, mostrar su nombre y apellidos junto con su número total de vuelos y la suma de horas de estos\n");
+        System.out.println("\n");
+
+        List<CrewMemberFlightsAndTimeInterface> crewMemberFlightsAndTimeInterface = crewMemberRepository.getCrewMemberFlightsAmountAndTotalFlightTimeJson();
+        for (CrewMemberFlightsAndTimeInterface info : crewMemberFlightsAndTimeInterface) {
+            System.out.println("Name: " + info.getName() + " Last name:" + info.getLastName() + " Total Flights: " + info.getTotalFlights() + " Total Hours: " + info.getTotalHours());
         }
     }
 }
