@@ -1,9 +1,6 @@
 package es.urjc.code.services;
 
-import es.urjc.code.dtos.AirplaneDto;
-import es.urjc.code.dtos.FlightDto;
-import es.urjc.code.dtos.CrewMemberAccumulatedFlightTime;
-import es.urjc.code.dtos.CrewMemberDto;
+import es.urjc.code.dtos.*;
 import es.urjc.code.repository.AirplaneRepository;
 import es.urjc.code.repository.FlightRepository;
 import es.urjc.code.repository.CrewMemberRepository;
@@ -34,6 +31,7 @@ public class DatabaseQueryRunner {
         this.query2();
         this.query3();
         this.query4();
+        this.query5();
 
         System.out.println("=========================================== STOP QUERING ===========================================");
     }
@@ -98,6 +96,17 @@ public class DatabaseQueryRunner {
         List<CrewMemberAccumulatedFlightTime> crewMemberAccumulatedFlightTime = crewMemberRepository.getCrewMemberFlightsAmountAndTotalFlightTime();
         for (CrewMemberAccumulatedFlightTime info : crewMemberAccumulatedFlightTime) {
             System.out.println(info);
+        }
+    }
+
+    private void query5() {
+        System.out.println("=========================================== QUERY 5 ===========================================");
+        System.out.println("Para cada avión, mostrar el nombre y apellidos de los mecánicos responsables de sus revisiones.\n");
+        System.out.println("\n");
+
+        List<AirplaneRevisionInterface> airplaneRevisionInterfaces = airplaneRepository.findAirplaneMechanicalReviewerDTO();
+        for (AirplaneRevisionInterface info : airplaneRevisionInterfaces) {
+            System.out.println("License Plate: " + info.getLicensePlate() + " Name: " + info.getName() + " Last name:" + info.getLastName());
         }
     }
 }
