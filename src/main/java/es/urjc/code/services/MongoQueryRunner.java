@@ -42,9 +42,9 @@ public class MongoQueryRunner {
         System.out.println("Listado mostrando, para cada comunidad autónoma, su número de provincias\n"
         + "(Ceuta y Melilla se consideran como parte de la comunidad autónoma 'sin comunidad').\n");
 
-        List<AutonomicCommunityAggregateDto> foo = provinceRepository.aggregationQuery();
-        for (AutonomicCommunityAggregateDto ca : foo) {
-            System.out.println(ca);
+        List<AutonomicCommunityAggregateDto> provincesByAutonomicCommunity = provinceRepository.numberOfProvincesPerAutonomicCommunity();
+        for (AutonomicCommunityAggregateDto ac : provincesByAutonomicCommunity) {
+            System.out.println(ac);
         }
     }
 
